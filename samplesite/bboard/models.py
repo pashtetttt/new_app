@@ -16,7 +16,19 @@ class Bb(models.Model):
     class Meta:
         verbose_name_plural = 'Объявления'
         verbose_name = 'Объявление'
-        ordering = ['-published']
+        ordering = ['-published'] # Можно поставить несколько параметров в списке,
+        # минус означает, что порядок сортировки будет обратным
+        unique_together = ('title', 'published')
+
+    # class Kinds(models.TextChoices):
+    #     BUY = 'b', 'Куплю'
+    #     SELL = 's', 'Продам'
+    #     EXCHANGE = 'c', 'Обменяю'
+    #     RENT = 'r'
+    #     __empty__ = 'Выберите тип публикуемого объявления'
+    #
+    # kind = models.CharField(max_length=1, choices=Kinds.choices,default=Kinds.SELL)
+    #
 
 
 class Rubric(models.Model):
